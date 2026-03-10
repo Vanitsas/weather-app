@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="day-mode">
+
+  <!-- ===== BACKGROUND ANIMATION LAYER ===== -->
+  <div id="bg-layer" class="bg-layer"></div>
+
+  <!-- ===== STAR LAYER (night mode) ===== -->
+  <div id="star-layer" class="star-layer"></div>
+
+  <!-- ===== DAY/NIGHT TOGGLE ===== -->
+  <button id="mode-toggle" class="mode-toggle" title="Toggle Day/Night">☀️</button>
+
+  <!-- ===== MAIN CARD ===== -->
+  <div class="weather-card">
+    <h1 class="app-title">SKYVISION</h1>
+
+    <!-- Search Area -->
+    <div class="search-area">
+      <input
+        type="text"
+        id="city-input"
+        placeholder="Enter city name..."
+        autocomplete="off"
+      />
+      <button id="search-btn" class="search-btn">Search</button>
+    </div>
+
+    <!-- Weather Display (hidden until data loads) -->
+    <div id="weather-display" class="weather-display hidden">
+      <img id="weather-icon" src="icons/default.png" alt="weather icon" class="weather-icon"/>
+      <div class="city-name" id="city-name">—</div>
+      <div class="temperature" id="temperature">—</div>
+      <div class="description" id="description">—</div>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="detail-label">Humidity</span>
+          <span class="detail-value" id="humidity">—</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Wind</span>
+          <span class="detail-value" id="wind">—</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Feels Like</span>
+          <span class="detail-value" id="feels-like">—</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Pressure</span>
+          <span class="detail-value" id="pressure">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Error message -->
+    <div id="error-msg" class="error-msg hidden"></div>
+  </div>
+
+  <!-- ===== TEST ANIMATIONS PANEL ===== -->
+  <div class="test-panel">
+    <button id="test-btn" class="test-btn">🎬 Test Animations</button>
+    <button id="stop-btn" class="stop-btn hidden">⏹ Stop</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
