@@ -7,7 +7,7 @@
    ============================================ */
 
 // ── API Config ──────────────────────────────
-const API_KEY = '9b4822cb603c06274aefe1acb4df92d6';  // Kendi OpenWeatherMap key’inizi buraya ekleyin
+const API_KEY = process.env.API_KEY;  // Kendi OpenWeatherMap key’inizi buraya ekleyin
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 // ── DOM References ───────────────────────────
