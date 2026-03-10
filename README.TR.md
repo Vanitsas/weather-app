@@ -1,5 +1,8 @@
 # SKYVISION — Hava Durumu Uygulaması
 
+## 🌍 Canlı Demo
+https://vanitsas.github.io/weather-app/
+
 ## Genel Bakış
 
 **SKYVISION**, **HTML, CSS ve JavaScript** ile hazırlanmış modern ve görsel açıdan çekici bir hava durumu uygulamasıdır. Dünyadaki herhangi bir şehir için **OpenWeatherMap API** üzerinden gerçek zamanlı hava durumu bilgisi sunar. Uygulama, mevcut hava koşullarına göre dinamik arka plan animasyonları, gece/gündüz modu ve pürüzsüz etkileşimli efektler içerir.

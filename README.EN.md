@@ -1,5 +1,8 @@
 # SKYVISION — Weather App
 
+## 🌍 Live Demo
+https://vanitsas.github.io/weather-app/
+
 ## Overview
 
 **SKYVISION** is a modern, visually engaging weather application built with **HTML, CSS, and JavaScript**. It provides real-time weather information for any city worldwide using the **OpenWeatherMap API**. The app features dynamic background animations based on the current weather, day/night toggle, and smooth interactive effects.
