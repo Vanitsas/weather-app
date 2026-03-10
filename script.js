@@ -1,14 +1,15 @@
 /* ============================================
    WEATHER APP — script.js
-   API: OpenWeatherMap
+   API: OpenWeatherMap via Netlify Function
    Features: Search, Day/Night toggle,
              Weather-based BG animations,
              Test animation cycle
    ============================================ */
 
 // ── API Config ──────────────────────────────
-const API_KEY = ' ';
-const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+// API key Netlify environment variable'da saklı
+// Frontend'e gelmiyor, güvenli!
+const API_URL = '/.netlify/functions/weather';
 
 // ── DOM References ───────────────────────────
 const cityInput      = document.getElementById('city-input');
@@ -79,7 +80,7 @@ function classifyWeather(description) {
   return 'clear';
 }
 
-// ── Fetch Weather from API ───────────────────
+// ── Fetch Weather — Netlify Function üzerinden ──
 async function fetchWeather(city) {
   showLoading(true);
   showError('');
@@ -87,10 +88,11 @@ async function fetchWeather(city) {
 
   try {
     const res = await fetch(
-      `${API_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`
+      `${API_URL}?city=${encodeURIComponent(city)}`
     );
 
     if (res.status === 404) throw new Error(`"${city}" bulunamadı. Şehir adını kontrol edin.`);
+    if (res.status === 401) throw new Error('API anahtarı geçersiz.');
     if (!res.ok)            throw new Error('Bir hata oluştu. Lütfen tekrar deneyin.');
 
     const data = await res.json();
@@ -146,7 +148,6 @@ modeToggle.addEventListener('click', () => {
   if (isNightMode) buildStars();
   else starLayer.innerHTML = '';
 
-  // Güncel ikonları day/night varyantına göre yenile
   const currentDesc = descEl.textContent;
   if (currentDesc && currentDesc !== '—') setWeatherIcon(currentDesc);
 });
@@ -177,7 +178,6 @@ function clearAnimations() {
 function startAnimation(type) {
   clearAnimations();
 
-  // Body'e weather class ekle → CSS day mode override'ları devreye girer
   document.body.classList.remove(...allWeatherClasses);
   document.body.classList.add(`weather-${type}`);
 
@@ -222,7 +222,6 @@ function animClouds(count = 6, slow = false) {
   }
 }
 
-// CSS cloud elementi oluştur
 function buildCloudEl() {
   const cloud = document.createElement('div');
   cloud.className = 'anim-cloud';
