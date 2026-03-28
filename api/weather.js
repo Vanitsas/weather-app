@@ -1,5 +1,4 @@
 // api/weather.js — Vercel Serverless Function
-import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
   const city = req.query.city;
@@ -8,7 +7,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'City parametresi gerekli.' });
   }
 
-  const API_KEY = process.env.WEATHER_API_KEY; // Vercel dashboard'da ekle
+  const API_KEY = process.env.OPENWEATHER_API_KEY; // Vercel dashboard'da ekle
   if (!API_KEY) {
     return res.status(500).json({ error: 'API anahtarı bulunamadı.' });
   }

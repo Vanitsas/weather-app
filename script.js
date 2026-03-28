@@ -9,8 +9,9 @@
 // ── API Config ──────────────────────────────
 // API key Netlify environment variable'da saklı
 // Frontend'e gelmiyor, güvenli!
-const API_URL = '/.netlify/functions/weather';
-const API_URL = '/api/weather'; // Vercel için
+const API_URL = window.location.hostname.includes('vercel.app')
+  ? '/api/weather'
+  : '/.netlify/functions/weather';
 
 // ── DOM References ───────────────────────────
 const cityInput      = document.getElementById('city-input');
